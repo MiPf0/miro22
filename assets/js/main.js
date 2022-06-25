@@ -188,3 +188,38 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+/*==================== COUNTDOWN ====================*/
+const deadline = 'September 24 2022 15:00:00 GMT+0200';
+
+function getTimeRemaining(endtime){
+    const total = Date.parse(endtime) - Date.parse(new Date());
+    const seconds = Math.floor( (total/1000) % 60 );
+    const minutes = Math.floor( (total/1000/60) % 60 );
+    const hours = Math.floor( (total/(1000*60*60)) % 24 );
+    const days = Math.floor( total/(1000*60*60*24) );
+  
+    return {
+      total,
+      days,
+      hours,
+      minutes,
+      seconds
+    };
+  }
+
+  function initializeClock(id, endtime) {
+    const clock = document.getElementById(id);
+    const timeinterval = setInterval(() => {
+      const t = getTimeRemaining(endtime);
+      clock.innerHTML = 'Noch ' + t.days + ' Tage, ' +
+                        + t.hours + ' Stunden, ' +
+                        + t.minutes + ' Minuten und ' +
+                        + t.seconds + ' Sekunden!';
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+    },1000);
+  }
+
+  initializeClock('clockdiv', deadline);
