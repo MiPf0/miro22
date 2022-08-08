@@ -215,7 +215,7 @@ function getTimeRemaining(endtime){
       clock.innerHTML = 'Noch ' + t.days + ' Tage, ' +
                         + t.hours + ' Stunden, ' +
                         + t.minutes + ' Minuten und ' +
-                        + t.seconds + ' Sekunden!';
+                        + t.seconds + ' Sekunden bis zum 24. September 2022 15:30 Uhr!';
       if (t.total <= 0) {
         clearInterval(timeinterval);
       }
